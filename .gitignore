@@ -1,0 +1,43 @@
+# Symfony
+/vendor/
+/var/
+/public/bundles/
+
+# Application dependencies
+/.phpunit.result.cache
+/.phpunit.cache
+/.phpunit.files
+
+# PHPCS (PHP Coding Standards Fixer)
+/.php_cs.cache
+
+# Composer
+/composer.phar
+/vendor-bin/
+
+# Symfony Encore
+/node_modules/
+/public/build/
+
+# Logs and temporary files
+/var/cache/
+/var/log/
+/var/sessions/
+/var/tmp/
+/public/uploads/
+
+# Environment file
+/.env.local
+
+# IDE files
+/.idea/
+/.vscode/
+
+# Miscellaneous
+/.DS_Store
+/.swo
+/.swp
+/.vagrant/
+*.log
+*.sublime-project
+*.sublime-workspace
