@@ -3,7 +3,7 @@
   "license": "MIT",
   "type": "library",
   "description": "The Lock Component creates and manages locks, a mechanism to provide exclusive access to a shared resource.",
-  "homepage": "https://github.com/Invertus/Lock",
+  "homepage": "https://github.com/Invertus/lock",
   "authors": [
     {
       "name": "Invertus",
@@ -14,15 +14,15 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/Invertus/Lock.git"
+      "url": "https://github.com/Invertus/lock.git"
     }
   ],
   "require": {
-    "php": ">=5.5.9"
+    "php": ">=5.5.9",
+    "symfony/lock": "v3.4.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "^5.7",
-    "symfony/lock": "v3.4.0"
+    "phpunit/phpunit": "^5.7"
   },
   "autoload": {
     "psr-4": {
