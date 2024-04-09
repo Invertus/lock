@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Invertus\Lock\Service;
 
 use Symfony\Component\Lock\Factory;
@@ -14,9 +16,9 @@ class LockV3 implements LockInterface
     /** @var ?LockInterface */
     private $lock;
 
-    public function __construct()
+    public function __construct(string $resourcePath)
     {
-        $this->lockFactory = new Factory(new FlockStore());
+        $this->lockFactory = new Factory(new FlockStore($resourcePath));
     }
 
     public function exists(): bool

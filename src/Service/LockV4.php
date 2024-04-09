@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Invertus\Lock\Service;
 
@@ -12,9 +13,9 @@ class LockV4 implements LockInterface
     /** @var ?LockInterface */
     private $lock;
 
-    public function __construct()
+    public function __construct(string $resourcePath)
     {
-        $this->lockFactory = new LockFactory(new FlockStore());
+        $this->lockFactory = new LockFactory(new FlockStore($resourcePath));
     }
 
     public function exists(): bool

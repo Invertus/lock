@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Invertus\Lock;
 
 use Invertus\Lock\Config\Config;
@@ -11,10 +13,10 @@ class Lock
     /** @var LockInterface */
     private $lock;
 
-    public function __construct()
+    public function __construct(string $resourcePath)
     {
         $lockFactory = new LockFactory();
-        $this->lock = $lockFactory->create();
+        $this->lock = $lockFactory->create($resourcePath);
     }
 
     /**
