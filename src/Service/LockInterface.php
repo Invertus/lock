@@ -1,15 +1,32 @@
 <?php
-declare(strict_types=1);
 
 namespace Invertus\Lock\Service;
 
 interface LockInterface
 {
-    public function exists(): bool;
+    /**
+     * @return bool
+     */
+    public function exists();
 
-    public function create(string $resource, int $ttl, bool $autoRelease): void;
+    /**
+     * @param string $resource
+     * @param int $ttl
+     * @param bool $autoRelease
+     *
+     * @return void
+     */
+    public function create($resource, $ttl, $autoRelease);
 
-    public function acquire(bool $blocking): bool;
+    /**
+     * @param bool $blocking
+     *
+     * @return bool
+     */
+    public function acquire($blocking);
 
-    public function release(): void;
+    /**
+     * @return void
+     */
+    public function release();
 }

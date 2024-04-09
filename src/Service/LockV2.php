@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 namespace Invertus\Lock\Service;
 
@@ -15,27 +14,48 @@ class LockV2 implements LockInterface
      */
     private $resourcePath;
 
-    public function __construct(string $resourcePath)
+    /**
+     * @param string $resourcePath
+     */
+    public function __construct($resourcePath)
     {
         $this->resourcePath = $resourcePath;
     }
 
-    public function exists(): bool
+    /**
+     * @return bool
+     */
+    public function exists()
     {
         return !empty($this->lock);
     }
 
-    public function create(string $resource, int $ttl, bool $autoRelease): void
+    /**
+     * @param string $resource
+     * @param int $ttl
+     * @param bool $autoRelease
+     *
+     * @return void
+     */
+    public function create($resource, $ttl, $autoRelease)
     {
         $this->lock = new LockHandler($resource, $this->resourcePath);
     }
 
-    public function acquire(bool $blocking): bool
+    /**
+     * @param bool $blocking
+     *
+     * @return bool
+     */
+    public function acquire($blocking)
     {
         return $this->lock->lock($blocking);
     }
 
-    public function release(): void
+    /**
+     * @return void
+     */
+    public function release()
     {
         $this->lock->release();
 

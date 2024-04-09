@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 namespace Invertus\Lock\Service;
 
@@ -8,7 +7,12 @@ use Symfony\Component\Lock\LockFactory as SymfonyFactoryV4;
 
 class LockFactory
 {
-    public function create(string $resourcePath): LockInterface
+    /**
+     * @param string $resourcePath
+     *
+     * @return LockInterface
+     */
+    public function create($resourcePath)
     {
         if (class_exists(SymfonyFactoryV4::class)) {
             // Symfony 4.4+

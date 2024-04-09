@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 namespace Invertus\Lock\Exception;
 
@@ -7,17 +6,26 @@ use Exception;
 
 class CouldNotHandleLocking extends Exception
 {
-    public static function lockExists(): self
+    /**
+     * @return CouldNotHandleLocking
+     */
+    public static function lockExists()
     {
         return new self('Lock exists');
     }
 
-    public static function lockOnAcquireIsMissing(): self
+    /**
+     * @return CouldNotHandleLocking
+     */
+    public static function lockOnAcquireIsMissing()
     {
         return new self('Lock on acquire is missing');
     }
 
-    public static function lockOnReleaseIsMissing(): self
+    /**
+     * @return CouldNotHandleLocking
+     */
+    public static function lockOnReleaseIsMissing()
     {
         return new self('Lock on release is missing');
     }

@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 namespace Invertus\Lock\Tests;
 
@@ -9,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class LockTest extends TestCase
 {
-    public function testItSuccessfullyCompletesLockFlow(): void
+    public function testItSuccessfullyCompletesLockFlow()
     {
         $lock = new Lock();
 
@@ -20,7 +19,7 @@ class LockTest extends TestCase
         $lock->release();
     }
 
-    public function testItSuccessfullyLocksResourceFromAnotherProcess(): void
+    public function testItSuccessfullyLocksResourceFromAnotherProcess()
     {
         $lock = new Lock();
 
@@ -35,7 +34,7 @@ class LockTest extends TestCase
         $this->assertFalse($newLock->acquire());
     }
 
-    public function testItSuccessfullyReleasesLockAndEnablesNextProcess(): void
+    public function testItSuccessfullyReleasesLockAndEnablesNextProcess()
     {
         $lock = new Lock();
 
@@ -52,7 +51,7 @@ class LockTest extends TestCase
         $this->assertTrue($newLock->acquire());
     }
 
-    public function testItUnsuccessfullyCompletesLockFlowFailedToCreateLockWithMissingLock(): void
+    public function testItUnsuccessfullyCompletesLockFlowFailedToCreateLockWithMissingLock()
     {
         $lock = new Lock();
 
@@ -62,7 +61,7 @@ class LockTest extends TestCase
         $lock->create('test-lock-name');
     }
 
-    public function testItUnsuccessfullyCompletesLockFlowFailedToAcquireLockWithMissingLock(): void
+    public function testItUnsuccessfullyCompletesLockFlowFailedToAcquireLockWithMissingLock()
     {
         $lock = new Lock();
 
@@ -71,7 +70,7 @@ class LockTest extends TestCase
         $lock->acquire();
     }
 
-    public function testItUnsuccessfullyCompletesLockFlowFailedToReleaseLockWithMissingLock(): void
+    public function testItUnsuccessfullyCompletesLockFlowFailedToReleaseLockWithMissingLock()
     {
         $lock = new Lock();
 

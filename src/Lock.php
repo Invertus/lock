@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 namespace Invertus\Lock;
 
@@ -13,16 +12,25 @@ class Lock
     /** @var LockInterface */
     private $lock;
 
-    public function __construct(string $resourcePath)
+    /**
+     * @param string $resourcePath
+     */
+    public function __construct($resourcePath = null)
     {
         $lockFactory = new LockFactory();
         $this->lock = $lockFactory->create($resourcePath);
     }
 
     /**
+     * @param string $resource
+     * @param int $ttl
+     * @param bool $autoRelease
+     *
+     * @return void
+     *
      * @throws CouldNotHandleLocking
      */
-    public function create(string $resource, int $ttl = Config::LOCK_TIME_TO_LIVE, bool $autoRelease = true): void
+    public function create($resource, $ttl = Config::LOCK_TIME_TO_LIVE, $autoRelease = true)
     {
         if ($this->lock->exists()) {
             throw CouldNotHandleLocking::lockExists();
@@ -32,9 +40,13 @@ class Lock
     }
 
     /**
+     * @param bool $blocking
+     *
+     * @return bool
+     *
      * @throws CouldNotHandleLocking
      */
-    public function acquire(bool $blocking = false): bool
+    public function acquire($blocking = false)
     {
         if (!$this->lock->exists()) {
             throw CouldNotHandleLocking::lockOnAcquireIsMissing();
@@ -44,9 +56,11 @@ class Lock
     }
 
     /**
+     * @return void
+     *
      * @throws CouldNotHandleLocking
      */
-    public function release(): void
+    public function release()
     {
         if (!$this->lock->exists()) {
             throw CouldNotHandleLocking::lockOnReleaseIsMissing();
