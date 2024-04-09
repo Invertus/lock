@@ -11,12 +11,6 @@
       "role": "Developer"
     }
   ],
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/Invertus/lock.git"
-    }
-  ],
   "require": {
     "php": ">=5.5.9",
     "symfony/lock": "v3.4.0"
