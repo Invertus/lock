@@ -1,0 +1,24 @@
+name: PHP Tests
+
+on: [push, pull_request]
+
+jobs:
+  php-tests:
+    name: PHP Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.2.5'
+
+      - name: Install dependencies
+        run: composer install --no-progress --no-suggest --prefer-dist
+
+      - name: Run PHPUnit tests
+        run: |
+          php vendor/phpunit/phpunit/phpunit --no-configuration tests
